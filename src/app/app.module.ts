@@ -15,6 +15,10 @@ import { RegisterComponent } from './general/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './general/product/product.component';
+import { CartComponent } from './general/cart/cart.component';
+import { CheckoutComponent } from './general/checkout/checkout.component';
+import { OrdersuccessComponent } from './general/ordersuccess/ordersuccess.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     AdminloginComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductComponent,
+    CartComponent,
+    CheckoutComponent,
+    OrdersuccessComponent
   ],
   imports: [
     BrowserModule,

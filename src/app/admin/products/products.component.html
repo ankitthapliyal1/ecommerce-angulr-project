@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Products  <a routerLink="/admin/product" class="btn btn-success pull-right">+ Products</a>
+        </h1>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="table-scrollable">
+            <table class="table table-bordered table-stripped">
+                <tr>
+                    <th>Actions</th>
+                    <th>Sr No</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>MRP</th>
+                    <th>Price</th>
+                    <th>Varieties</th>
+                    <th>In Stock</th>
+                    <th>Is Active</th>
+                  
+                </tr>
+                <tr *ngFor="let item of products; let i = index">
+                    <td style="width:200px;">
+                        <button class="btn btn-primary btn-sm" routerLink="/admin/product/{{item._id}}">Edit</button>
+                        <button class="btn btn-danger btn-sm" (click)="onDelete(item._id)">Delete</button>
+                    </td>
+                    <td>{{i + 1}}</td>
+                    <td><img src="{{baseurl + item.imagepath}}" style="height:80px; width:auto;" /></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.mrp | currency:"INR"}}</td>
+                    <td>{{item.price  | currency:"INR"}}</td>
+                    <td><a class="btn btn-warning btn-sm" routerLink="/admin/product/varieties/{{item._id}}">{{item.varieties.length}}</a></td>
+                    <td>{{item.instock}}</td>
+                    <td>{{item.isactive}}</td>
+           
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</div>

@@ -17,6 +17,7 @@ export class AdminloginComponent {
   ) { }
 
   ngOnInit(): void {
+    window.scroll(0,0)
     this.formdata = new FormGroup(
       {
         username: new FormControl("", Validators.required),
@@ -30,7 +31,8 @@ export class AdminloginComponent {
     this.api.post("admin/login", {data:val}).subscribe((result:any)=>{
       console.log(result);
       if(result.data.status == "success"){
-        alert("success")
+        localStorage.setItem("usertype", "admin");
+        window.location.replace("/admin/dashboard")
       }
       else{
         this.message = "Username or Password is wrong"

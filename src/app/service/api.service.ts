@@ -12,7 +12,15 @@ export class ApiService {
 
   post(path: string, data: any) {
     const headers = { 'Content-type': 'application/json' };
-    const body = JSON.stringify(data)
-    return this.http.post(this.baseUrl + path, body, { 'headers': headers })
+
+    return this.http.post(this.baseUrl + path, data, { 'headers': headers })
   }
+
+  postdata(path: string, data: any) {
+    return this.http.post(this.baseUrl + path, data)
+  }
+
+  
+
+ 
 }

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Categories</h1>
+  </div>
+
+  <div class="col-lg-12">
+    <form #categoryform="ngForm" name="category" (ngSubmit)="onSubmit(categoryform)" enctype="multipart/form-data" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="category.name" required>
+      </div>
+      <div class="form-group">
+        <label for="">Sr No</label>
+        <input type="number" name="srno" min="1" class="form-control" [(ngModel)]="category.srno" required>
+      </div>
+      <div class="form-group">
+        <label for="">Image</label>
+        <input type="file" class="form-control" name="file" accept="image/*" (change)="imageChanged($event)" required/>
+      </div>
+      <div class="form-group">
+        <button type="submit" name="sumit" [disabled]="!categoryform.valid" class="btn btn-success">Save</button>
+      </div>
+    </form>
+    
+  </div>
+
+
+  <div class="col-lg-12">
+    <div class="table-scrollable">
+      <table class="table table-bordered table-stripped">
+        <tr>
+          <th>Actions</th>
+          <th>Sr No</th>
+          <th>Image</th>
+          <th>Name</th>
+        </tr>
+        <tr *ngFor="let category of categories">
+          <td style="width:200px;">
+            <button class="btn btn-primary btn-sm" (click)="onEdit(category._id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="onDelete(category._id)">Delete</button>
+          </td>
+          <td>{{category.srno}}</td>
+          <td><img src="{{baseurl + category.imagepath}}" style="height:80px; width:auto;" /></td>
+          <td>{{category.name}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

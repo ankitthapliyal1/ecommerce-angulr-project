@@ -19,12 +19,15 @@
           <div class="col-sm-12 text-left menu-1">
             <ul>
               <li routerLinkActive="active" ><a routerLink="/home" >Home</a></li>
-              <li routerLinkActive="active"><a routerLink="/products">Men</a></li>
-              <li routerLinkActive="active"><a routerLink="/products">Women</a></li> 
-              <li routerLinkActive="active"><a routerLink="about">About</a></li>
-              <li routerLinkActive="active"><a routerLink="contact">Contact</a></li>
-              <li routerLinkActive="active" class="cart"><a routerLink="cart"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
-              <li routerLinkActive="active" class="cart"><a routerLink="login"><i class="icon-shopping-cart"></i> User Login</a></li>
+              <li *ngFor="let category of categories" routerLinkActive="active"><a routerLink="/products/{{category._id}}">{{category.name}}</a></li>
+             
+              <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+              <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
+              <li *ngIf="adminloggedin" routerLinkActive="active"><a routerLink="/admin/dashboard">Admin</a></li>
+              <li routerLinkActive="active" class="cart"><a routerLink="/cart"><i class="icon-shopping-cart"></i> Cart [ <span id="spnCount">{{cartcount}}</span> ]</a></li>
+              <li *ngIf="userloggedin" routerLinkActive="active" class="cart"><a routerLink="user"><i class="icon-shopping-cart"></i>Hello {{username}}</a></li>
+              <li *ngIf="userloggedin" routerLinkActive="active" class="cart"><a style="cursor: pointer;" (click)="logout()"><i class="icon-shopping-cart"></i>LogOut</a></li>
+              <li *ngIf="!userloggedin" routerLinkActive="active" class="cart"><a routerLink="login"><i class="icon-shopping-cart"></i> User Login</a></li>
             </ul>
           </div>
         </div>

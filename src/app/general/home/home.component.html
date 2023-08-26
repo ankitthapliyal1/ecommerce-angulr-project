@@ -74,22 +74,15 @@
   <div class="colorlib-product">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-6 text-center" *ngFor="let item of categories">
           <div class="featured">
-            <a href="#" class="featured-img" style="background-image: url(assets/images/men.jpg);"></a>
+            <a routerLink="products/{{item._id}}" class="featured-img" style="background-image: url({{baseurl + item.imagepath}});"></a>
             <div class="desc">
-              <h2><a href="#">Shop Men's Collection</a></h2>
+              <h2><a routerLink="products/{{item._id}}">{{item.name}}</a></h2>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 text-center">
-          <div class="featured">
-            <a href="#" class="featured-img" style="background-image: url(assets/images/women.jpg);"></a>
-            <div class="desc">
-              <h2><a href="#">Shop Women's Collection</a></h2>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </div>
   </div>
